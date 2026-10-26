@@ -1,0 +1,66 @@
+package com.example.splab;
+
+public class ImageProxy implements Element, Picture{
+    private final String url;
+    private final Dimension dimension;
+    private Image realImage;
+
+    public ImageProxy(String url){
+        this.url = url;
+        this.dimension = new Dimension(200, 200);
+        this.realImage = null;
+    }
+
+    public ImageProxy(ImageProxy imageProxy){
+        this.url = imageProxy.url;
+        this.dimension = new Dimension(200, 200);
+        this.realImage = null;
+    }
+
+    private Image loadImage(){
+        if(realImage == null){
+            realImage = new Image(url);
+        }
+        return realImage;
+    }
+
+    @Override
+    public void print() {
+        loadImage().print();
+    }
+
+    @Override
+    public void add(Element e) {
+        throw new UnsupportedOperationException("Unsupported operation");
+    }
+
+    @Override
+    public void remove(Element e) {
+        throw new UnsupportedOperationException("Unsupported operation");
+    }
+
+    @Override
+    public Element get(int index) {
+        throw new UnsupportedOperationException("Unsupported operation");
+    }
+
+    @Override
+    public Element copy() {
+        return new ImageProxy(this);
+    }
+
+    @Override
+    public String url() {
+        return url;
+    }
+
+    @Override
+    public Dimension dim() {
+        return dimension;
+    }
+
+    @Override
+    public ImageContent content() {
+        return loadImage().content();
+    }
+}

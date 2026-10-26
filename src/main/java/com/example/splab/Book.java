@@ -24,7 +24,7 @@ public class Book extends Section{
     }
 
     public void addContent(Element e){
-        super.add(e.copy());
+        super.add(e);
     }
 
     @Override
