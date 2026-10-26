@@ -1,1 +1,1 @@
-"# SPLab Project" 
+SPLab Project
