@@ -1,0 +1,38 @@
+package com.example.splab;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Section implements Element{
+    protected final String title;
+    protected final List<Element> children;
+
+    public Section(String title){
+        this.title = title;
+        children = new ArrayList<>();
+    }
+
+    @Override
+    public void print() {
+        if(!(this instanceof Book))
+            System.out.println(title);
+        for(Element e : children){
+            e.print();
+        }
+    }
+
+    @Override
+    public void add(Element e) {
+        children.add(e);
+    }
+
+    @Override
+    public void remove(Element e) {
+        children.remove(e);
+    }
+
+    @Override
+    public Element get(int index) {
+        return children.get(index);
+    }
+}
