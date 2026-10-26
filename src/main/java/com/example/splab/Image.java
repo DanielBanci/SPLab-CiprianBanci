@@ -7,9 +7,18 @@ public class Image implements Element{
         this.url = url;
     }
 
+    public Image(Image image){
+        this.url = image.url;
+    }
+
     @Override
     public void print() {
         System.out.println("Image with name: " + url);
+    }
+
+    @Override
+    public Element copy() {
+        return new Image(this);
     }
 
     @Override

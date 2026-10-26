@@ -11,12 +11,25 @@ public class Book extends Section{
         this.authors = new ArrayList<>();
     }
 
+    public Book(Book book){
+        super((Section) book);
+        this.authors = new ArrayList<>();
+        for(Author author : book.authors){
+            this.authors.add(author.copy());
+        }
+    }
+
     public void addAuthor(Author author){
-        authors.add(author);
+        authors.add(author.copy());
     }
 
     public void addContent(Element e){
-        super.add(e);
+        super.add(e.copy());
+    }
+
+    @Override
+    public Element copy() {
+        return new Book(this);
     }
 
     @Override

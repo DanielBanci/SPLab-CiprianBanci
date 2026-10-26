@@ -7,9 +7,18 @@ public class Paragraph implements Element{
         this.text = text;
     }
 
+    public Paragraph(Paragraph paragraph){
+        this.text = paragraph.text;
+    }
+
     @Override
     public void print() {
         System.out.println("Paragraph: " + text);
+    }
+
+    @Override
+    public Element copy() {
+        return new Paragraph(this);
     }
 
     @Override

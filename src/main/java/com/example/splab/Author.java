@@ -13,6 +13,15 @@ public class Author {
         this(name, "");
     }
 
+    public Author(Author author){
+        this.name = author.name;
+        this.surname = author.surname;
+    }
+
+    public Author copy(){
+        return new Author(this);
+    }
+
     public void print(){
         System.out.println("Author: " + name + " " + surname);
     }

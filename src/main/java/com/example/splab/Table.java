@@ -7,9 +7,18 @@ public class Table implements Element{
         this.something = something;
     }
 
+    public Table(Table table){
+        this.something = table.something;
+    }
+
     @Override
     public void print() {
         System.out.println("Table: " + this.something);
+    }
+
+    @Override
+    public Element copy() {
+        return new Table(this);
     }
 
     @Override

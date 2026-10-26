@@ -12,6 +12,19 @@ public class Section implements Element{
         children = new ArrayList<>();
     }
 
+    public Section(Section section){
+        this.title = section.title;
+        this.children = new ArrayList<>();
+        for(Element e : section.children){
+            this.children.add(e.copy());
+        }
+    }
+
+    @Override
+    public Element copy() {
+        return new Section(this);
+    }
+
     @Override
     public void print() {
         if(!(this instanceof Book))
@@ -23,7 +36,7 @@ public class Section implements Element{
 
     @Override
     public void add(Element e) {
-        children.add(e);
+        children.add(e.copy());
     }
 
     @Override
