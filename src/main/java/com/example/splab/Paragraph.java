@@ -2,6 +2,7 @@ package com.example.splab;
 
 public class Paragraph implements Element{
     private final String text;
+    private AlignStrategy alignStrategy;
 
     public Paragraph(String text){
         this.text = text;
@@ -9,16 +10,29 @@ public class Paragraph implements Element{
 
     public Paragraph(Paragraph paragraph){
         this.text = paragraph.text;
+        this.alignStrategy = paragraph.alignStrategy;
     }
 
     @Override
     public void print() {
-        System.out.println("Paragraph: " + text);
+        if(alignStrategy == null) {
+            System.out.println("Paragraph: " + text);
+        }else{
+            alignStrategy.render(this, new Context());
+        }
     }
 
     @Override
     public Element copy() {
         return new Paragraph(this);
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setAlignStrategy(AlignStrategy alignStrategy) {
+        this.alignStrategy = alignStrategy;
     }
 
     @Override
