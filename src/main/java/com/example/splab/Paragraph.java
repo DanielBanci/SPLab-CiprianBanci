@@ -49,4 +49,9 @@ public class Paragraph implements Element{
     public Element get(int index) {
         throw new UnsupportedOperationException("Unsupported operation");
     }
+
+    @Override
+    public void accept(Visitor visitor) {
+        visitor.visit(this);
+    }
 }

@@ -6,4 +6,5 @@ public interface Element {
     void remove(Element e);
     Element get(int index);
     Element copy();
+    void accept(Visitor visitor);
 }

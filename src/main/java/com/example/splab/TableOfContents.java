@@ -1,19 +1,32 @@
 package com.example.splab;
 
-public class TableOfContents implements Element{
-    private final String something;
+import java.util.ArrayList;
+import java.util.List;
 
-    public TableOfContents(String something){
-        this.something = something;
+public class TableOfContents implements Element{
+    private List<String> entries;
+
+    public TableOfContents(){
+        this.entries = new ArrayList<>();
     }
 
     public TableOfContents(TableOfContents tableOfContents){
-        this.something = tableOfContents.something;
+        this.entries = new ArrayList<>();
+        for(String str : tableOfContents.entries){
+            entries.add(str);
+        }
+    }
+
+    public void addEntry(String entry){
+        entries.add(entry);
     }
 
     @Override
     public void print() {
-        System.out.println("TableOfContents: " + something);
+        System.out.println("TableOfContents: ");
+        for(String entry : entries){
+            System.out.println(entry);
+        }
     }
 
     @Override
@@ -34,5 +47,10 @@ public class TableOfContents implements Element{
     @Override
     public Element get(int index) {
         throw new UnsupportedOperationException("Unsupported operation");
+    }
+
+    @Override
+    public void accept(Visitor visitor) {
+        visitor.visit(this);
     }
 }

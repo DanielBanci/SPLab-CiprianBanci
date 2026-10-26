@@ -63,4 +63,9 @@ public class ImageProxy implements Element, Picture{
     public ImageContent content() {
         return loadImage().content();
     }
+
+    @Override
+    public void accept(Visitor visitor) {
+        visitor.visit(this);
+    }
 }

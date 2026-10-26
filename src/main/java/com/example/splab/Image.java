@@ -61,4 +61,9 @@ public class Image implements Element, Picture{
     public Element get(int index) {
         throw new UnsupportedOperationException("Unsupported operation");
     }
+
+    @Override
+    public void accept(Visitor visitor) {
+        visitor.visit(this);
+    }
 }

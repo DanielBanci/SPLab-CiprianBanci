@@ -20,6 +20,10 @@ public class Section implements Element{
         }
     }
 
+    public String getTitle() {
+        return title;
+    }
+
     @Override
     public Element copy() {
         return new Section(this);
@@ -47,5 +51,13 @@ public class Section implements Element{
     @Override
     public Element get(int index) {
         return children.get(index);
+    }
+
+    @Override
+    public void accept(Visitor visitor) {
+        visitor.visit(this);
+        for(Element e : children){
+            e.accept(visitor);
+        }
     }
 }
