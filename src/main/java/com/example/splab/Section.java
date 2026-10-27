@@ -4,8 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Section implements Element{
-    protected final String title;
+    protected String title;
     protected final List<Element> children;
+
+    protected Section(){
+        title = "-1";
+        children = new ArrayList<>();
+    }
 
     public Section(String title){
         this.title = title;
@@ -22,6 +27,10 @@ public class Section implements Element{
 
     public String getTitle() {
         return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     @Override

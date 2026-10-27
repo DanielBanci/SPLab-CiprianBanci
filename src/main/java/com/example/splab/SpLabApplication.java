@@ -100,7 +100,7 @@ public class SpLabApplication {
 //        stats.printStatistics();
 
         // toc
-        Book noapteBuna = new Book("Noapte buna, copii!");
+        Book noapteBuna = new Book(1, "Noapte buna, copii!");
         Author rpGheo = new Author("Radu Pavel Gheo");
         noapteBuna.addAuthor(rpGheo);
 
