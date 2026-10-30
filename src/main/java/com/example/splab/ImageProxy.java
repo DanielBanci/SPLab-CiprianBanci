@@ -1,8 +1,17 @@
 package com.example.splab;
 
-public class ImageProxy implements Element, Picture{
+import jakarta.persistence.Entity;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Transient;
+import lombok.NoArgsConstructor;
+
+@Entity
+@NoArgsConstructor(force = true)
+public class ImageProxy extends BaseElement implements Picture{
     private final String url;
+    @OneToOne
     private final Dimension dimension;
+    @Transient
     private Image realImage;
 
     public ImageProxy(String url){

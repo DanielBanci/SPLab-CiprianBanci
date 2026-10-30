@@ -1,7 +1,16 @@
 package com.example.splab;
 
-public class Paragraph implements Element{
+import jakarta.persistence.Entity;
+import jakarta.persistence.Transient;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
+@Entity
+@NoArgsConstructor(force = true)
+public class Paragraph extends BaseElement{
+    @Getter
     private final String text;
+    @Transient
     private AlignStrategy alignStrategy;
 
     public Paragraph(String text){
@@ -25,10 +34,6 @@ public class Paragraph implements Element{
     @Override
     public Element copy() {
         return new Paragraph(this);
-    }
-
-    public String getText() {
-        return text;
     }
 
     public void setAlignStrategy(AlignStrategy alignStrategy) {

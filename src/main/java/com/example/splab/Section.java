@@ -1,10 +1,20 @@
 package com.example.splab;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class Section implements Element{
+@Entity
+public class Section extends BaseElement{
+    @Setter
+    @Getter
     protected String title;
+
+    @OneToMany(targetEntity = BaseElement.class)
     protected final List<Element> children;
 
     protected Section(){
@@ -23,14 +33,6 @@ public class Section implements Element{
         for(Element e : section.children){
             this.children.add(e.copy());
         }
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
     }
 
     @Override

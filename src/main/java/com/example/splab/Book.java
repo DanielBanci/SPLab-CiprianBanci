@@ -1,11 +1,21 @@
 package com.example.splab;
 
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.ManyToMany;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
 public class Book extends Section{
-    private long id;
-    private final List<Author> authors;
+//    private long id;
+    @Setter
+    @Getter
+    @ManyToMany(cascade = CascadeType.ALL)
+    private List<Author> authors;
 
     public Book(){
         super();

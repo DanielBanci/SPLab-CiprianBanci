@@ -1,6 +1,12 @@
 package com.example.splab;
 
-public class Table implements Element{
+import jakarta.persistence.Entity;
+import lombok.NoArgsConstructor;
+
+@Entity
+@jakarta.persistence.Table(name = "book_table")
+@NoArgsConstructor(force = true)
+public class Table extends BaseElement{
     private final String something;
 
     public Table(String something){

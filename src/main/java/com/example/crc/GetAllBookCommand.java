@@ -5,14 +5,14 @@ import com.example.splab.Book;
 import java.util.List;
 
 public class GetAllBookCommand implements Command<List<Book>>{
-    private final BookService bookService;
+    private final CommandContext commandContext;
 
-    public GetAllBookCommand(BookService bookService) {
-        this.bookService = bookService;
+    public GetAllBookCommand(CommandContext commandContext) {
+        this.commandContext = commandContext;
     }
 
     @Override
     public List<Book> execute() {
-        return bookService.findAll();
+        return commandContext.getBooksRepository().findAll();
     }
 }

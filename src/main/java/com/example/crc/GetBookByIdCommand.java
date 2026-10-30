@@ -2,17 +2,19 @@ package com.example.crc;
 
 import com.example.splab.Book;
 
-public class GetBookByIdCommand implements Command<Book> {
-    private final BookService bookService;
-    private final Long id;
+import java.util.Optional;
 
-    public GetBookByIdCommand(BookService bookService, Long id) {
-        this.bookService = bookService;
+public class GetBookByIdCommand implements Command<Optional<Book>> {
+    private final CommandContext commandContext;
+    private final long id;
+
+    public GetBookByIdCommand(CommandContext commandContext, Long id) {
+        this.commandContext = commandContext;
         this.id = id;
     }
 
     @Override
-    public Book execute() {
-        return bookService.findById(id);
+    public Optional<Book> execute() {
+        return commandContext.getBooksRepository().findById((int)id);
     }
 }

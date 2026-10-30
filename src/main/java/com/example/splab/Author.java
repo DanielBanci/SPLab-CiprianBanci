@@ -1,8 +1,27 @@
 package com.example.splab;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Entity
+@NoArgsConstructor(force = true)
 public class Author {
-    private final String name;
-    private final String surname;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
+    @Getter
+    @Setter
+    private String name;
+
+    @Getter
+    @Setter
+    private String surname;
 
     public Author(String name, String surname){
         this.name = name;
@@ -14,6 +33,7 @@ public class Author {
     }
 
     public Author(Author author){
+        this.id = author.id;
         this.name = author.name;
         this.surname = author.surname;
     }

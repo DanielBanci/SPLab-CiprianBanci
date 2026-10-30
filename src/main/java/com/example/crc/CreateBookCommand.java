@@ -5,11 +5,12 @@ import com.example.splab.Book;
 import java.util.concurrent.TimeUnit;
 
 public class CreateBookCommand implements Command<Book>{
-    private final BookService bookService;
-    private final Book bookToCreate;
+//    private final BookService bookService;
+    private final CommandContext commandContext;
+    private Book bookToCreate;
 
-    public CreateBookCommand(BookService bookService, Book bookToCreate) {
-        this.bookService = bookService;
+    public CreateBookCommand(CommandContext commandContext, Book bookToCreate) {
+        this.commandContext = commandContext;
         this.bookToCreate = bookToCreate;
     }
 
@@ -21,7 +22,7 @@ public class CreateBookCommand implements Command<Book>{
             throw new RuntimeException(e);
         }
 
-        bookToCreate.setId(bookService.save(bookToCreate));
+        bookToCreate = commandContext.getBooksRepository().save(bookToCreate);
         return bookToCreate;
     }
 }

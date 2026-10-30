@@ -1,9 +1,16 @@
 package com.example.splab;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Transient;
+import lombok.NoArgsConstructor;
+
 import java.util.concurrent.TimeUnit;
 
-public class Image implements Element, Picture{
+@Entity
+@NoArgsConstructor(force = true)
+public class Image extends BaseElement implements Picture{
     private final String url;
+    @Transient
     private ImageContent content;
 
     public Image(String url){
